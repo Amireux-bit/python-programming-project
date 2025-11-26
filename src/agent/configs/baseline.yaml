@@ -1,0 +1,10 @@
+max_steps: 6               
+min_steps: 4
+temperature: 0.3              
+min_sources: 4                
+relevance_threshold: 0.65      
+enable_safety: true           
+seed: 42                      
+tools:                          
+  timeout_sec: 10
+  max_retries: 2
