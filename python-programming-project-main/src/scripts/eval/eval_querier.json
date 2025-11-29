@@ -1,0 +1,210 @@
+[
+  {
+    "id": "q01",
+    "user_query": "Plan a budget 5-day trip from Shanghai to Paris with the cheapest possible round-trip flights and 2–3 star hotels. Total budget under 12,000 RMB.",
+    "difficulty": "medium",
+    "scenario": "international_budget_trip",
+    "gold_answer": "Provide a 5-day itinerary with low-cost round-trip flights (typically 4000–6000 RMB), recommend 2–3 star hotels (400–700 RMB per night), and check if total budget stays under 12,000 RMB. Include at least one flight booking URL and one hotel URL.",
+    "gold_sources": [
+      "https://www.expedia.com/",
+      "https://www.booking.com/",
+      "https://www.skyscanner.com/"
+    ]
+  },
+  {
+    "id": "q02",
+    "user_query": "I have a 6000 RMB budget. Can I travel from Beijing to Tokyo for 4 days? Suggest flight and accommodation options.",
+    "difficulty": "hard",
+    "scenario": "tight_budget",
+    "gold_answer": "Explain that round-trip flights usually cost 3000–4500 RMB and budget hotels 300–600 RMB per night. Evaluate whether the 6000 RMB budget is feasible. Include real flight and hotel URLs.",
+    "gold_sources": [
+      "https://www.skyscanner.com/",
+      "https://www.agoda.com/",
+      "https://www.booking.com/"
+    ]
+  },
+  {
+    "id": "q03",
+    "user_query": "Plan a 3-day solo trip to Seoul with mid-range hotels and an estimated total budget.",
+    "difficulty": "easy",
+    "scenario": "short_city_trip",
+    "gold_answer": "Provide a 3-day itinerary in Seoul, estimate round-trip flights, suggest mid-range hotels (600–900 RMB per night), and offer a total budget estimate. Reference at least one hotel or flight URL.",
+    "gold_sources": ["https://www.booking.com/", "https://www.expedia.com/"]
+  },
+  {
+    "id": "q04",
+    "user_query": "Help me find the cheapest flights from Los Angeles to New York for next month and propose a 2-day itinerary.",
+    "difficulty": "medium",
+    "scenario": "domestic_flight_search",
+    "gold_answer": "Check real round-trip prices using Search, pick the lowest fare, and create a short 2-day itinerary in New York. Include at least one airline or flight-search URL.",
+    "gold_sources": ["https://www.kayak.com/", "https://www.expedia.com/"]
+  },
+  {
+    "id": "q05",
+    "user_query": "Plan a luxury honeymoon trip to Bali for 5 days with beachfront hotels.",
+    "difficulty": "medium",
+    "scenario": "luxury_trip",
+    "gold_answer": "Recommend premium beachfront hotels, check real prices for flights and accommodation, and provide a 5-day honeymoon itinerary. Include URLs to luxury hotels.",
+    "gold_sources": ["https://www.booking.com/", "https://www.agoda.com/"]
+  },
+  {
+    "id": "q06",
+    "user_query": "Find me the cheapest round-trip flight from Singapore to Bangkok this weekend.",
+    "difficulty": "easy",
+    "scenario": "flight_price_search",
+    "gold_answer": "Use Search to obtain real weekend flight prices and return the cheapest result with a URL.",
+    "gold_sources": ["https://www.skyscanner.com/", "https://www.expedia.com/"]
+  },
+  {
+    "id": "q07",
+    "user_query": "Is 800 USD enough for a 4-day trip in London including hotel and food?",
+    "difficulty": "hard",
+    "scenario": "budget_feasibility",
+    "gold_answer": "Estimate flight (if relevant), hotel (100–200 USD per night), meals, and transport; check whether 800 USD is enough. Include URLs for evidence.",
+    "gold_sources": ["https://www.booking.com/", "https://www.expedia.com/"]
+  },
+  {
+    "id": "q08",
+    "user_query": "Plan a 2-day family trip in Tokyo with child-friendly attractions and hotel options.",
+    "difficulty": "easy",
+    "scenario": "family_trip",
+    "gold_answer": "List kid-friendly attractions, estimate hotel price, and provide a 2-day itinerary. Include a child-friendly hotel URL.",
+    "gold_sources": ["https://www.booking.com/", "https://www.tripadvisor.com/"]
+  },
+  {
+    "id": "q09",
+    "user_query": "Help me plan a weekend hiking trip in Switzerland. I need hotel suggestions and estimated transportation cost.",
+    "difficulty": "medium",
+    "scenario": "nature_trip",
+    "gold_answer": "Provide hiking areas, hotel recommendations, and transport cost estimates with URLs.",
+    "gold_sources": ["https://www.booking.com/", "https://www.swiss.com/"]
+  },
+  {
+    "id": "q10",
+    "user_query": "Design a 7-day Europe multi-city trip covering Paris, Amsterdam, and Berlin.",
+    "difficulty": "hard",
+    "scenario": "multi_city_trip",
+    "gold_answer": "Propose an itinerary, check train/flight prices between cities, and include at least one travel booking URL.",
+    "gold_sources": ["https://www.raileurope.com/", "https://www.expedia.com/"]
+  },
+  {
+    "id": "q11",
+    "user_query": "I want a 3-day food tour in Bangkok with hotel recommendations.",
+    "difficulty": "easy",
+    "scenario": "food_trip",
+    "gold_answer": "Provide a food-centered itinerary, estimate hotel prices, and include URL sources.",
+    "gold_sources": ["https://www.tripadvisor.com/", "https://www.booking.com/"]
+  },
+  {
+    "id": "q12",
+    "user_query": "Find the average cost of a 5-night hotel stay in New York in December.",
+    "difficulty": "medium",
+    "scenario": "price_estimation",
+    "gold_answer": "Search hotel prices for December, compute average using Calculator tool, and include the hotel listing URL.",
+    "gold_sources": ["https://www.booking.com/", "https://www.expedia.com/"]
+  },
+  {
+    "id": "q13",
+    "user_query": "Compare the price of staying in Hong Kong vs. Macau for 3 nights.",
+    "difficulty": "hard",
+    "scenario": "comparison_task",
+    "gold_answer": "Search average hotel prices in both cities and compare them. Include URLs for both.",
+    "gold_sources": ["https://www.booking.com/", "https://www.agoda.com/"]
+  },
+  {
+    "id": "q14",
+    "user_query": "Suggest cheap ski resorts in Japan for a 4-day winter trip.",
+    "difficulty": "medium",
+    "scenario": "ski_trip",
+    "gold_answer": "Recommend ski towns, check accommodation prices, and list transport options with URLs.",
+    "gold_sources": ["https://www.booking.com/", "https://www.tripadvisor.com/"]
+  },
+  {
+    "id": "q15",
+    "user_query": "Can I visit Singapore for 3 days with a total budget of 300 USD?",
+    "difficulty": "hard",
+    "scenario": "budget_feasibility",
+    "gold_answer": "Estimate hotel prices (typically 80–150 USD per night) and food/transport. Determine if 300 USD is realistic. Include URLs.",
+    "gold_sources": ["https://www.booking.com/"]
+  },
+  {
+    "id": "q16",
+    "user_query": "Plan a 2-day romantic getaway in Venice with gondola ride suggestions.",
+    "difficulty": "medium",
+    "scenario": "romantic_trip",
+    "gold_answer": "Recommend romantic spots, gondola prices, and hotel suggestions. Include at least one booking URL.",
+    "gold_sources": ["https://www.booking.com/", "https://www.tripadvisor.com/"]
+  },
+  {
+    "id": "q17",
+    "user_query": "Estimate the total cost for 5 students traveling to Seoul for 3 days.",
+    "difficulty": "medium",
+    "scenario": "group_budget",
+    "gold_answer": "Estimate flight, 2–3 star hotel cost, meals, multiply for 5 people using Calculator. Include URLs.",
+    "gold_sources": ["https://www.skyscanner.com/", "https://www.booking.com/"]
+  },
+  {
+    "id": "q18",
+    "user_query": "Help me find pet-friendly hotels in Tokyo for a weekend stay.",
+    "difficulty": "easy",
+    "scenario": "pet_travel",
+    "gold_answer": "Search for pet-friendly hotels, list price ranges, and provide booking URLs.",
+    "gold_sources": ["https://www.booking.com/", "https://www.tripadvisor.com/"]
+  },
+  {
+    "id": "q19",
+    "user_query": "Plan a backpacker-style 5-day trip to Vietnam with hostel recommendations.",
+    "difficulty": "medium",
+    "scenario": "backpacker_trip",
+    "gold_answer": "Suggest hostels (50–120 RMB per night), provide rough itinerary, and include URLs.",
+    "gold_sources": ["https://www.hostelworld.com/", "https://www.booking.com/"]
+  },
+  {
+    "id": "q20",
+    "user_query": "Find me the cheapest accommodation in Sydney for next weekend.",
+    "difficulty": "easy",
+    "scenario": "cheap_hotel_search",
+    "gold_answer": "Search hotel listings, pick lowest price options, and include URL.",
+    "gold_sources": ["https://www.booking.com/"]
+  },
+  {
+    "id": "q21",
+    "user_query": "How much would it cost for two adults to travel from Toronto to Vancouver for 5 days?",
+    "difficulty": "medium",
+    "scenario": "cost_estimation",
+    "gold_answer": "Estimate round-trip ticket prices, accommodation for 5 nights, meals, and total using Calculator. Include URLs.",
+    "gold_sources": ["https://www.expedia.com/"]
+  },
+  {
+    "id": "q22",
+    "user_query": "Plan a cultural 4-day trip in Kyoto including temples and local experiences.",
+    "difficulty": "easy",
+    "scenario": "cultural_trip",
+    "gold_answer": "List temples, cultural activities, hotel options, and include URLs.",
+    "gold_sources": ["https://www.tripadvisor.com/", "https://www.booking.com/"]
+  },
+  {
+    "id": "q23",
+    "user_query": "Compare the total cost of staying in Osaka for 5 days in a hostel versus a 3-star hotel.",
+    "difficulty": "hard",
+    "scenario": "price_comparison",
+    "gold_answer": "Use Search to get hostel vs. 3-star hotel prices, compute 5-day total cost with Calculator, and include booking URLs.",
+    "gold_sources": ["https://www.hostelworld.com/", "https://www.booking.com/"]
+  },
+  {
+    "id": "q24",
+    "user_query": "Plan a relaxing 3-day spa and hot spring trip in Taiwan.",
+    "difficulty": "medium",
+    "scenario": "relaxation_trip",
+    "gold_answer": "List hot spring hotels, price ranges, and propose a 3-day itinerary. Include real URLs.",
+    "gold_sources": ["https://www.booking.com/"]
+  },
+  {
+    "id": "q25",
+    "user_query": "Help me estimate how much it would cost for a 7-day Italy food tour.",
+    "difficulty": "hard",
+    "scenario": "gourmet_trip",
+    "gold_answer": "Estimate flights, hotels, food costs, and transport. Provide realistic price ranges and URLs.",
+    "gold_sources": ["https://www.tripadvisor.com/", "https://www.booking.com/"]
+  }
+]

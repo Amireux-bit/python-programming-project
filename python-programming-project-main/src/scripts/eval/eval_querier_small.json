@@ -1,0 +1,78 @@
+[
+ {
+    "id": "q01",
+    "user_query": "Design a 7-day Europe multi-city trip covering Paris, Amsterdam, and Berlin.",
+    "difficulty": "hard",
+    "scenario": "multi_city_trip",
+    "gold_answer": "Propose an itinerary, check train/flight prices between cities, and include at least one travel booking URL.",
+    "gold_sources": ["https://www.raileurope.com/", "https://www.expedia.com/"]
+ },
+ {
+    "id": "q02",
+    "user_query": "I have a 6000 RMB budget. Can I travel from Beijing to Tokyo for 4 days? Suggest flight and accommodation options.",
+    "difficulty": "hard",
+    "scenario": "tight_budget",
+    "gold_answer": "Explain that round-trip flights usually cost 3000–4500 RMB and budget hotels 300–600 RMB per night. Evaluate whether the 6000 RMB budget is feasible. Include real flight and hotel URLs.",
+    "gold_sources": [
+      "https://www.skyscanner.com/",
+      "https://www.agoda.com/",
+      "https://www.booking.com/"
+    ]
+  },
+  {
+    "id": "q03",
+    "user_query": "Plan a 3-day solo trip to Seoul with mid-range hotels and an estimated total budget.",
+    "difficulty": "easy",
+    "scenario": "short_city_trip",
+    "gold_answer": "Provide a 3-day itinerary in Seoul, estimate round-trip flights, suggest mid-range hotels (600–900 RMB per night), and offer a total budget estimate. Reference at least one hotel or flight URL.",
+    "gold_sources": ["https://www.booking.com/", "https://www.expedia.com/"]
+  },
+  {
+    "id": "q04",
+    "user_query": "Help me find the cheapest flights from Los Angeles to New York for next month and propose a 2-day itinerary.",
+    "difficulty": "medium",
+    "scenario": "domestic_flight_search",
+    "gold_answer": "Check real round-trip prices using Search, pick the lowest fare, and create a short 2-day itinerary in New York. Include at least one airline or flight-search URL.",
+    "gold_sources": ["https://www.kayak.com/", "https://www.expedia.com/"]
+  },
+  {
+    "id": "q05",
+    "user_query": "Plan a luxury honeymoon trip to Bali for 5 days with beachfront hotels.",
+    "difficulty": "medium",
+    "scenario": "luxury_trip",
+    "gold_answer": "Recommend premium beachfront hotels, check real prices for flights and accommodation, and provide a 5-day honeymoon itinerary. Include URLs to luxury hotels.",
+    "gold_sources": ["https://www.booking.com/", "https://www.agoda.com/"]
+  },
+  {
+    "id": "q06",
+    "user_query": "Find me the cheapest round-trip flight from Singapore to Bangkok this weekend.",
+    "difficulty": "easy",
+    "scenario": "flight_price_search",
+    "gold_answer": "Use Search to obtain real weekend flight prices and return the cheapest result with a URL.",
+    "gold_sources": ["https://www.skyscanner.com/", "https://www.expedia.com/"]
+  },
+  {
+    "id": "q07",
+    "user_query": "Is 800 USD enough for a 4-day trip in London including hotel and food?",
+    "difficulty": "hard",
+    "scenario": "budget_feasibility",
+    "gold_answer": "Estimate flight (if relevant), hotel (100–200 USD per night), meals, and transport; check whether 800 USD is enough. Include URLs for evidence.",
+    "gold_sources": ["https://www.booking.com/", "https://www.expedia.com/"]
+  },
+  {
+    "id": "q08",
+    "user_query": "Plan a 2-day family trip in Tokyo with child-friendly attractions and hotel options.",
+    "difficulty": "easy",
+    "scenario": "family_trip",
+    "gold_answer": "List kid-friendly attractions, estimate hotel price, and provide a 2-day itinerary. Include a child-friendly hotel URL.",
+    "gold_sources": ["https://www.booking.com/", "https://www.tripadvisor.com/"]
+  },
+  {
+    "id": "q09",
+    "user_query": "Help me plan a weekend hiking trip in Switzerland. I need hotel suggestions and estimated transportation cost.",
+    "difficulty": "medium",
+    "scenario": "nature_trip",
+    "gold_answer": "Provide hiking areas, hotel recommendations, and transport cost estimates with URLs.",
+    "gold_sources": ["https://www.booking.com/", "https://www.swiss.com/"]
+  }
+]
