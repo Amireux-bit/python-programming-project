@@ -4,31 +4,87 @@ import json
 from agent.prompts import build_initial_prompt, final_answer_prompt
 from agent.evidence_gate import evidence_sufficient, format_evidence_for_prompt
 from agent.trace import TraceLogger
+from agent.safety import safety_guard
 from tools.calculator import CalculatorTool
 from tools.search import SearchTool
 from agent.llm import QwenLLM
 from pathlib import Path
 
 class TravelAssistantController:
-    def __init__(self, cal_tool, search_tool, config, llm=None):
+    def __init__(self, cal_tool, search_tool, config, llm=None, debug_mode: bool = False):
         """
         cal_tool: 计算器工具实例
         search_tool: 搜索工具实例
         config: dict 配置
         llm: 可选的 LLM 实例，默认创建 QwenLLM
+        debug_mode: 若为 True，批量运行时每个 query 单独一个 trace 文件
         """
         self.llm = llm if llm is not None else QwenLLM()
         self.cal_tool = cal_tool
         self.search_tool = search_tool
         self.config = config
-        self.trace = TraceLogger()
+        self.debug_mode = debug_mode
+        self.enable_safety = bool(config.get("enable_safety", True))
 
-    def run(self, user_query: str) -> dict:
+        # 默认模式下：保持原来的行为，只创建一个 TraceLogger
+        self.trace = None  # 延迟创建
+
+
+    def run(self, user_query: str, run_id: str | None = None) -> dict:
         """
         主运行方法：输入用户查询，返回答案与 Trace
+        run_id: 可选的一个标识（比如每个query的id），
+                在 debug_mode=True 时会写进日志文件名，便于区分。
         """
+        # ===== 1. 安全模块入口拦截 =====
+        if self.enable_safety:
+            should_block, safe_answer = safety_guard(user_query)
+            if should_block:
+                # 记录一个简单的 trace，方便之后分析
+                trace = {
+                    "steps": [
+                        {
+                            "step_id": 0,
+                            "thought": "Safety module blocked the request.",
+                            "action": {
+                                "tool_name": "SafetyGuard",
+                                "params": ""
+                            },
+                            "observation": "Blocked by safety module.",
+                            "evidence": []
+                        }
+                    ],
+                    "final": {
+                        "answer": safe_answer,
+                        "status": "blocked_by_safety"
+                    }
+                }
+                return {
+                    "id": str(uuid.uuid4()),
+                    "user_query": user_query,
+                    "status": "blocked",
+                    "answer": safe_answer,
+                    "latency_sec": 0.0,
+                    "trace": trace
+                }
+       
+        # 根据模式决定 TraceLogger 的行为
+        if self.debug_mode:
+            # 调试/批量评测：每次 run 都新建一个 TraceLogger，
+            # 并使用 run_id 作为文件名的一部分
+            from agent.trace import TraceLogger  # 防止循环导入时可以放这里
+            tag = run_id or "run"
+            self.trace = TraceLogger(debug_mode=True, run_tag=tag)
+        else:
+            # 默认模式：保持现在的行为，只在第一次创建一个 TraceLogger
+            if self.trace is None:
+                from agent.trace import TraceLogger
+                self.trace = TraceLogger()
+        
+        
+
         context = self._init_context(user_query)
-        min_steps = self.config.get("min_steps", 3)  # 新增
+        min_steps = self.config.get("min_steps", 3)
 
         for step_id in range(1, self.config.get("max_steps", 6) + 1):
             thought = self._generate_thought(context)
@@ -50,23 +106,38 @@ class TravelAssistantController:
             )
 
             # 证据门控判断（增加最小步数限制）
-            if step_id == self.config.get("max_steps", 6):
+            max_steps = self.config.get("max_steps", 6)
+            use_evidence_gate = self.config.get("use_evidence_gate", True)
+
+            if step_id == max_steps:
+                # 如果关闭证据门控：不做任何检查，直接给答案
+                if not use_evidence_gate:
+                    final_answer = self._final_answer(context)
+                    self.trace.log_final(final_answer)
+                    return {
+                        "status": "success",
+                        "answer": final_answer,
+                        "trace": self.trace.get_trace()
+                    }
+
+                # 默认：开启证据门控，按规则检查
                 if evidence_sufficient(context["evidence"], self.config, context["used_tools"]):
-                   final_answer = self._final_answer(context)
-                   self.trace.log_final(final_answer)
-                   return {
-                    "status": "success",
-                    "answer": final_answer,
-                    "trace": self.trace.get_trace()
-                }
+                    final_answer = self._final_answer(context)
+                    self.trace.log_final(final_answer)
+                    return {
+                        "status": "success",
+                        "answer": final_answer,
+                        "trace": self.trace.get_trace()
+                    }
                 else:
-                   fail_answer = self._fail_answer()
-                   self.trace.log_final(fail_answer)
-                   return {
-                    "status": "failed",
-                    "answer": fail_answer,
-                    "trace": self.trace.get_trace()
-                }
+                    fail_answer = self._fail_answer()
+                    self.trace.log_final(fail_answer)
+                    return {
+                        "status": "failed",
+                        "answer": fail_answer,
+                        "trace": self.trace.get_trace()
+                    }
+
 
 
     # ---------------- 内部方法 ----------------
@@ -161,6 +232,9 @@ class TravelAssistantController:
             return f"Tool {tool_name} not found.", [], []
         
         try:
+            if isinstance(tool, SearchTool) and not self.config.get("enable_search", True):
+                msg = "当前实验配置为【禁止使用 Search】，请根据已有证据直接给出尽量保守的回答。"
+                return msg, [], []
             # 执行工具
             if isinstance(tool, CalculatorTool):
                 raw_result = tool.run(expression=params)

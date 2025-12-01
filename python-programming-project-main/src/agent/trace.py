@@ -3,7 +3,11 @@ from pathlib import Path
 from datetime import datetime
 
 class TraceLogger:
-    def __init__(self, log_dir=None):
+    def __init__(self, log_dir=None, debug_mode: bool = False, run_tag: str | None = None):
+        """
+        debug_mode=False: 保持原来行为
+        debug_mode=True: 允许通过 run_tag 为每次运行生成独立的 trace 文件名
+        """
         self.trace = {
             "steps": [],
             "final": None
@@ -32,7 +36,14 @@ class TraceLogger:
             raise
         
         # 生成日志文件名
-        self.log_file = self.log_dir / f"trace_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        if debug_mode and run_tag:
+            # 调试模式：文件名里带上 run_tag，方便区分每个 query
+            filename = f"trace_{run_tag}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        else:
+            # 默认行为：跟以前一样，用时间戳
+            filename = f"trace_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+
+        self.log_file = self.log_dir / filename
         print(f"[INFO] 日志文件: {self.log_file.absolute()}")
     
     def log_step(self, step_id:int, thought:str, tool_name:str, params:dict, observation:str, evidence:list):

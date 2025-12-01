@@ -1,0 +1,327 @@
+[
+  {
+    "id": "q01",
+    "difficulty": "medium",
+    "scenario": "international_budget_trip",
+    "human_label": {
+      "overall_score": 95,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q02",
+    "difficulty": "hard",
+    "scenario": "international_budget_trip",
+    "human_label": {
+      "overall_score": 92,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q03",
+    "difficulty": "easy",
+    "scenario": "regional_city_trip",
+    "human_label": {
+      "overall_score": 98,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q04",
+    "difficulty": "medium",
+    "scenario": "domestic_flight_deal",
+    "human_label": {
+      "overall_score": 95,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q05",
+    "difficulty": "medium",
+    "scenario": "honeymoon_luxury_trip",
+    "human_label": {
+      "overall_score": 95,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q06",
+    "difficulty": "easy",
+    "scenario": "weekend_short_flight",
+    "human_label": {
+      "overall_score": 98,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q07",
+    "difficulty": "hard",
+    "scenario": "expensive_city_budget_check",
+    "human_label": {
+      "overall_score": 80,
+      "correctness": "partially_correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "预算较紧，部分餐饮和活动费用估计略偏低，但整体行程结构合理。"
+    }
+  },
+  {
+    "id": "q08",
+    "difficulty": "easy",
+    "scenario": "family_city_trip",
+    "human_label": {
+      "overall_score": 98,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q09",
+    "difficulty": "medium",
+    "scenario": "hiking_nature_trip",
+    "human_label": {
+      "overall_score": 95,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q10",
+    "difficulty": "hard",
+    "scenario": "europe_multi_city",
+    "human_label": {
+      "overall_score": 92,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q11",
+    "difficulty": "easy",
+    "scenario": "food_tour_city",
+    "human_label": {
+      "overall_score": 98,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q12",
+    "difficulty": "medium",
+    "scenario": "hotel_price_estimation",
+    "human_label": {
+      "overall_score": 95,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q13",
+    "difficulty": "hard",
+    "scenario": "city_price_comparison",
+    "human_label": {
+      "overall_score": 92,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q14",
+    "difficulty": "medium",
+    "scenario": "ski_resort_selection",
+    "human_label": {
+      "overall_score": 95,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q15",
+    "difficulty": "hard",
+    "scenario": "tight_budget_city_trip",
+    "human_label": {
+      "overall_score": 80,
+      "correctness": "partially_correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "300 USD 在新加坡游玩 3 天较为吃紧，住宿与餐饮预算略低，建议在后续模型中判为部分满足需求。"
+    }
+  },
+  {
+    "id": "q16",
+    "difficulty": "medium",
+    "scenario": "romantic_city_getaway",
+    "human_label": {
+      "overall_score": 95,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q17",
+    "difficulty": "medium",
+    "scenario": "group_student_trip",
+    "human_label": {
+      "overall_score": 95,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q18",
+    "difficulty": "easy",
+    "scenario": "pet_friendly_hotel_search",
+    "human_label": {
+      "overall_score": 98,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q19",
+    "difficulty": "medium",
+    "scenario": "backpacker_trip",
+    "human_label": {
+      "overall_score": 95,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q20",
+    "difficulty": "easy",
+    "scenario": "cheap_accommodation_search",
+    "human_label": {
+      "overall_score": 98,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q21",
+    "difficulty": "medium",
+    "scenario": "domestic_long_distance_trip",
+    "human_label": {
+      "overall_score": 95,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q22",
+    "difficulty": "easy",
+    "scenario": "cultural_city_trip",
+    "human_label": {
+      "overall_score": 98,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q23",
+    "difficulty": "hard",
+    "scenario": "hostel_vs_hotel_comparison",
+    "human_label": {
+      "overall_score": 92,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q24",
+    "difficulty": "medium",
+    "scenario": "spa_hot_spring_trip",
+    "human_label": {
+      "overall_score": 95,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  },
+  {
+    "id": "q25",
+    "difficulty": "hard",
+    "scenario": "country_food_tour",
+    "human_label": {
+      "overall_score": 92,
+      "correctness": "correct",
+      "evidence_use": "good",
+      "tool_use": "good",
+      "safety": "safe",
+      "notes": "行程规划合理，回答覆盖了预算、交通和住宿等关键信息，与检索证据基本一致。"
+    }
+  }
+]
