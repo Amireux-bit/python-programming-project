@@ -1,14 +1,16 @@
 import uuid
 import time
 import json
-from agent.prompts import build_initial_prompt, final_answer_prompt
+from agent.prompts import build_initial_prompt, final_answer_prompt,format_output
 from agent.evidence_gate import evidence_sufficient, format_evidence_for_prompt
 from agent.trace import TraceLogger
 from agent.safety import safety_guard
 from tools.calculator import CalculatorTool
-from tools.search import SearchTool
+from tools.search import SmartSearchTool
 from agent.llm import QwenLLM
 from pathlib import Path
+
+
 
 class TravelAssistantController:
     def __init__(self, cal_tool, search_tool, config, llm=None, debug_mode: bool = False):
@@ -123,6 +125,7 @@ class TravelAssistantController:
                 # 默认：开启证据门控，按规则检查
                 if evidence_sufficient(context["evidence"], self.config, context["used_tools"]):
                     final_answer = self._final_answer(context)
+                    final_answer = format_output(final_answer)
                     self.trace.log_final(final_answer)
                     return {
                         "status": "success",
@@ -171,7 +174,8 @@ class TravelAssistantController:
         f"用户的问题: {context['user_query']}\n\n"
         f"目前已知信息:\n{obs_text}\n\n"
         f"已调用过的工具: {used_tools_text}\n\n"
-        "**重要**：如果当前信息中缺少具体的价格数据（如住宿、交通、餐饮费用），\n"
+        "一定一定记住不要重复搜索已经获得的信息。\n"
+        "**重要**：如果当前信息中缺少具体的价格数据（如住宿、餐饮费用），\n"
         "你必须继续调用 Search 工具获取详细价格，不能编造数字。\n\n"
         "现在请输出下一步工具调用（只输出一行，严格按格式）：\n"
         "工具名: JSON参数"
@@ -232,7 +236,7 @@ class TravelAssistantController:
             return f"Tool {tool_name} not found.", [], []
         
         try:
-            if isinstance(tool, SearchTool) and not self.config.get("enable_search", True):
+            if isinstance(tool, SmartSearchTool) and not self.config.get("enable_search", True):
                 msg = "当前实验配置为【禁止使用 Search】，请根据已有证据直接给出尽量保守的回答。"
                 return msg, [], []
             # 执行工具
@@ -245,7 +249,7 @@ class TravelAssistantController:
                 else:
                     return f"计算错误: {result_dict.get('error', '未知错误')}", [], []
                     
-            elif isinstance(tool, SearchTool):
+            elif isinstance(tool, SmartSearchTool):
                 raw_result = tool.run(query=params)
                 print(f"[调试] Search 原始结果: {raw_result}") 
                 result_dict = json.loads(raw_result)

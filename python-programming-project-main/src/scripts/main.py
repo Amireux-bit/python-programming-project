@@ -8,7 +8,7 @@ sys.path.insert(0, str(src_dir))
 from agent.controller import TravelAssistantController
 import yaml
 from tools.calculator import CalculatorTool
-from tools.search import SearchTool
+from tools.search import SmartSearchTool
 from agent.llm import QwenLLM
 
 if __name__ == "__main__":
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     config = yaml.safe_load(open(config_path, "r", encoding="utf-8"))
     
     cal = CalculatorTool()
-    search = SearchTool()
+    search = SmartSearchTool()
 
     controller = TravelAssistantController(
         llm=QwenLLM(api_key="sk-KnnTjVEys05BmjMCD100AcD4B72849Ab9628979d64D35b05"),
@@ -26,13 +26,15 @@ if __name__ == "__main__":
         config=config
     )
 
-    # 示例用户查询
     user_query = "请帮我规划一个从上海到巴黎的五天旅行行程。"
 
-    # 运行控制器
     result = controller.run(user_query)
 
-    # 输出结果
     print("状态:", result["status"])
-    print("答案:", result["answer"])
-    print("Trace:", result["trace"])
+    print("\n" + "="*50)
+    print("答案:")
+    print("="*50)
+    # 直接打印，不要和其他字符串拼接
+    print(result["answer"])
+    print("="*50)
+    print("\nTrace:", result["trace"])

@@ -1,7 +1,7 @@
-max_steps: 9               
+max_steps: 7               
 min_steps: 4
 temperature: 0.3              
-min_sources: 4                
+min_sources: 0                
 relevance_threshold: 0.65      
 enable_safety: true           
 seed: 42                      

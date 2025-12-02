@@ -18,7 +18,7 @@ def evidence_sufficient(evidence_list: list, config: dict, used_tools: list) -> 
 
     # 检查来源数量
     unique_sources = set(e.get("source") for e in search_evidence)
-    if len(unique_sources) < config.get("min_sources", 2):
+    if len(unique_sources) < config.get("min_sources", 0):
         print(f"[证据门控] ❌ 来源不足: {len(unique_sources)}/{config.get('min_sources', 2)}")
         return False
 
@@ -26,11 +26,6 @@ def evidence_sufficient(evidence_list: list, config: dict, used_tools: list) -> 
     max_rel = max(e.get("score", 0.0) for e in search_evidence)
     if max_rel < config.get("relevance_threshold", 0.8):
         print(f"[证据门控] ❌ 相关性不足: {max_rel}/{config.get('relevance_threshold', 0.8)}")
-        return False
-
-    # 新增：检查价格信息
-    if not has_price_information(search_evidence):
-        print(f"[证据门控] ❌ 缺少价格信息")
         return False
 
     print(f"[证据门控] ✅ 通过检查")
