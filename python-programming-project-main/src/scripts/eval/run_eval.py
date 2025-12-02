@@ -23,7 +23,7 @@ from agent.llm import QwenLLM
 def build_controller():
     """创建和 main.py 类似的 TravelAssistantController 实例。"""
     # 读取配置文件：src/agent/configs/baseline.yaml
-    config_path = SRC_DIR / "agent" / "configs" / "baseline.yaml"
+    config_path = SRC_DIR / "agent" / "python-programming-project-main" / "src" / "configs" / "baseline.yaml"
     with open(config_path, "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
 

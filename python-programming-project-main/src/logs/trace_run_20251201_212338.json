@@ -1,0 +1,241 @@
+{
+  "steps": [
+    {
+      "step_id": 1,
+      "thought": "Search: {\"query\": \"Guangzhou to Beijing flight price\"}",
+      "action": {
+        "tool_name": "Search",
+        "params": "Guangzhou to Beijing flight price"
+      },
+      "observation": "- Popular airlines from Guangzhou to Beijing · China Southern. Nonstop. from $685. Typical price: $410–720 · Air China. Nonstop. Typical price: $820–970. $820.\n- Cheap Flights from Guangzhou (CAN) to Beijing (PEK) start at $464 for one-way and $961 for round trip. Earn your airline miles on top of our rewards!\n- The lowest price we've seen for a one-way Guangzhou Baiyun International Airport to Beijing flight is $68. The cheapest price for a return flight is $190. Bear ...\n- Book direct flights from Guangzhou to Beijing: One way flights from $68, round trip flights from $128. Find flight deals for the next 3 months below.\n- The absolute cheapest return flight from Guangzhou to Beijing costs $133 on the route between Guangzhou (CAN) and Beijing Capital Airport (PEK).",
+      "evidence": [
+        {
+          "content": "Popular airlines from Guangzhou to Beijing · China Southern. Nonstop. from $685. Typical price: $410–720 · Air China. Nonstop. Typical price: $820–970. $820.",
+          "source": "https://www.google.com/travel/flights/flights-from-guangzhou-to-beijing.html",
+          "score": 0.87
+        },
+        {
+          "content": "Cheap Flights from Guangzhou (CAN) to Beijing (PEK) start at $464 for one-way and $961 for round trip. Earn your airline miles on top of our rewards!",
+          "source": "https://www.expedia.com/lp/flights/can/pek/guangzhou-to-beijing",
+          "score": 0.77
+        },
+        {
+          "content": "The lowest price we've seen for a one-way Guangzhou Baiyun International Airport to Beijing flight is $68. The cheapest price for a return flight is $190. Bear ...",
+          "source": "https://www.skyscanner.com/routes/can/bjsa/guangzhou-to-beijing.html",
+          "score": 0.86
+        },
+        {
+          "content": "Book direct flights from Guangzhou to Beijing: One way flights from $68, round trip flights from $128. Find flight deals for the next 3 months below.",
+          "source": "https://us.trip.com/flights/guangzhou-to-beijing/airfares-can-bjs/",
+          "score": 0.76
+        },
+        {
+          "content": "The absolute cheapest return flight from Guangzhou to Beijing costs $133 on the route between Guangzhou (CAN) and Beijing Capital Airport (PEK).",
+          "source": "https://www.kayak.com/flight-routes/Guangzhou-Baiyun-CAN/Beijing-BJS",
+          "score": 0.73
+        }
+      ]
+    },
+    {
+      "step_id": 2,
+      "thought": "Search: {\"query\": \"Beijing hotel prices\"}\nSearch: {\"query\": \"attractions in Beijing\"}\nSearch: {\"query\": \"Beijing restaurant prices\"}\nCalculator: {\"expression\": \"685 + 128 + 430 + 80\"}",
+      "action": {
+        "tool_name": "Search",
+        "params": "Beijing hotel prices"
+      },
+      "observation": "- Great savings on hotels in Beijing, China online. Good availability and great rates. Read hotel reviews and choose the best hotel deal for your stay.\n- View deals from $17 per night, see photos and read reviews for the best Beijing hotels from travelers like you - then compare today's prices ...\n- The cheapest months to visit are December to February, while booking hotels 3+ months in advance often yields the best rates. Look for last-minute deals on ...\n- The average price of a double room in Beijing is $176 per night. In the last 3 days, KAYAK found great deals as cheap as $24 per night.\n- Beijing hotels & places to stay. Search to compare prices and discover great deals with free cancellation.",
+      "evidence": [
+        {
+          "content": "Great savings on hotels in Beijing, China online. Good availability and great rates. Read hotel reviews and choose the best hotel deal for your stay.",
+          "source": "https://www.booking.com/city/cn/beijing.html",
+          "score": 0.83
+        },
+        {
+          "content": "View deals from $17 per night, see photos and read reviews for the best Beijing hotels from travelers like you - then compare today's prices ...",
+          "source": "https://www.tripadvisor.com/Hotels-g294212-Beijing-Hotels.html",
+          "score": 0.79
+        },
+        {
+          "content": "The cheapest months to visit are December to February, while booking hotels 3+ months in advance often yields the best rates. Look for last-minute deals on ...",
+          "source": "https://www.expedia.com/Beijing-Hotels.d178237.Travel-Guide-Hotels",
+          "score": 0.56
+        },
+        {
+          "content": "The average price of a double room in Beijing is $176 per night. In the last 3 days, KAYAK found great deals as cheap as $24 per night.",
+          "source": "https://www.kayak.com/Beijing-Hotels.3286.hotel.ksp",
+          "score": 0.62
+        },
+        {
+          "content": "Beijing hotels & places to stay. Search to compare prices and discover great deals with free cancellation.",
+          "source": "https://www.agoda.com/city/beijing-cn.html",
+          "score": 0.69
+        }
+      ]
+    },
+    {
+      "step_id": 3,
+      "thought": "Calculator: {\"expression\": \"128\"}",
+      "action": {
+        "tool_name": "Calculator",
+        "params": "128"
+      },
+      "observation": "128",
+      "evidence": []
+    },
+    {
+      "step_id": 4,
+      "thought": "Search: {\"query\": \"Beijing hotel deals\"}",
+      "action": {
+        "tool_name": "Search",
+        "params": "Beijing hotel deals"
+      },
+      "observation": "- The average price of a double room in Beijing is $176 per night. In the last 3 days, KAYAK found great deals as cheap as $24 per night.See more\n- Experience luxury at Four Seasons Hotel Beijing with special offers and up to 20% off. Enjoy exclusive packages and world-class service. Book today.\n- View deals from $17 per night, see photos and read reviews for the best Beijing hotels from travelers like you - then compare today's prices ...\n- Search all Beijing, hotels on Hotwire. Free cancellation available for most hotels, including our daily Hot Rate deals!\n- Great savings on hotels in Beijing, China online. Good availability and great rates. Read hotel reviews and choose the best hotel deal for your stay.",
+      "evidence": [
+        {
+          "content": "The average price of a double room in Beijing is $176 per night. In the last 3 days, KAYAK found great deals as cheap as $24 per night.See more",
+          "source": "https://www.kayak.com/Beijing-Hotels.3286.hotel.ksp",
+          "score": 0.83
+        },
+        {
+          "content": "Experience luxury at Four Seasons Hotel Beijing with special offers and up to 20% off. Enjoy exclusive packages and world-class service. Book today.",
+          "source": "https://www.fourseasons.com/beijing/offers/",
+          "score": 0.79
+        },
+        {
+          "content": "View deals from $17 per night, see photos and read reviews for the best Beijing hotels from travelers like you - then compare today's prices ...",
+          "source": "https://www.tripadvisor.com/Hotels-g294212-Beijing-Hotels.html",
+          "score": 0.76
+        },
+        {
+          "content": "Search all Beijing, hotels on Hotwire. Free cancellation available for most hotels, including our daily Hot Rate deals!",
+          "source": "https://www.hotwire.com/Beijing-Hotels.d178237.Travel-Guide-Hotels",
+          "score": 0.72
+        },
+        {
+          "content": "Great savings on hotels in Beijing, China online. Good availability and great rates. Read hotel reviews and choose the best hotel deal for your stay.",
+          "source": "https://www.booking.com/city/cn/beijing.html",
+          "score": 0.69
+        }
+      ]
+    },
+    {
+      "step_id": 5,
+      "thought": "Search: {\"query\": \"Beijing hotel deals\"}",
+      "action": {
+        "tool_name": "Search",
+        "params": "Beijing hotel deals"
+      },
+      "observation": "- The average price of a double room in Beijing is $176 per night. In the last 3 days, KAYAK found great deals as cheap as $24 per night.See more\n- Experience luxury at Four Seasons Hotel Beijing with special offers and up to 20% off. Enjoy exclusive packages and world-class service. Book today.\n- View deals from $17 per night, see photos and read reviews for the best Beijing hotels from travelers like you - then compare today's prices ...\n- Search all Beijing, hotels on Hotwire. Free cancellation available for most hotels, including our daily Hot Rate deals!\n- Great savings on hotels in Beijing, China online. Good availability and great rates. Read hotel reviews and choose the best hotel deal for your stay.",
+      "evidence": [
+        {
+          "content": "The average price of a double room in Beijing is $176 per night. In the last 3 days, KAYAK found great deals as cheap as $24 per night.See more",
+          "source": "https://www.kayak.com/Beijing-Hotels.3286.hotel.ksp",
+          "score": 0.83
+        },
+        {
+          "content": "Experience luxury at Four Seasons Hotel Beijing with special offers and up to 20% off. Enjoy exclusive packages and world-class service. Book today.",
+          "source": "https://www.fourseasons.com/beijing/offers/",
+          "score": 0.79
+        },
+        {
+          "content": "View deals from $17 per night, see photos and read reviews for the best Beijing hotels from travelers like you - then compare today's prices ...",
+          "source": "https://www.tripadvisor.com/Hotels-g294212-Beijing-Hotels.html",
+          "score": 0.76
+        },
+        {
+          "content": "Search all Beijing, hotels on Hotwire. Free cancellation available for most hotels, including our daily Hot Rate deals!",
+          "source": "https://www.hotwire.com/Beijing-Hotels.d178237.Travel-Guide-Hotels",
+          "score": 0.72
+        },
+        {
+          "content": "Great savings on hotels in Beijing, China online. Good availability and great rates. Read hotel reviews and choose the best hotel deal for your stay.",
+          "source": "https://www.booking.com/city/cn/beijing.html",
+          "score": 0.69
+        }
+      ]
+    },
+    {
+      "step_id": 6,
+      "thought": "Search: {\"query\": \"Beijing hotel prices\"}",
+      "action": {
+        "tool_name": "Search",
+        "params": "Beijing hotel prices"
+      },
+      "observation": "- Great savings on hotels in Beijing, China online. Good availability and great rates. Read hotel reviews and choose the best hotel deal for your stay.\n- View deals from $17 per night, see photos and read reviews for the best Beijing hotels from travelers like you - then compare today's prices ...\n- The cheapest months to visit are December to February, while booking hotels 3+ months in advance often yields the best rates. Look for last-minute deals on ...\n- The average price of a double room in Beijing is $176 per night. In the last 3 days, KAYAK found great deals as cheap as $24 per night.\n- Beijing hotels & places to stay. Search to compare prices and discover great deals with free cancellation.",
+      "evidence": [
+        {
+          "content": "Great savings on hotels in Beijing, China online. Good availability and great rates. Read hotel reviews and choose the best hotel deal for your stay.",
+          "source": "https://www.booking.com/city/cn/beijing.html",
+          "score": 0.83
+        },
+        {
+          "content": "View deals from $17 per night, see photos and read reviews for the best Beijing hotels from travelers like you - then compare today's prices ...",
+          "source": "https://www.tripadvisor.com/Hotels-g294212-Beijing-Hotels.html",
+          "score": 0.79
+        },
+        {
+          "content": "The cheapest months to visit are December to February, while booking hotels 3+ months in advance often yields the best rates. Look for last-minute deals on ...",
+          "source": "https://www.expedia.com/Beijing-Hotels.d178237.Travel-Guide-Hotels",
+          "score": 0.56
+        },
+        {
+          "content": "The average price of a double room in Beijing is $176 per night. In the last 3 days, KAYAK found great deals as cheap as $24 per night.",
+          "source": "https://www.kayak.com/Beijing-Hotels.3286.hotel.ksp",
+          "score": 0.62
+        },
+        {
+          "content": "Beijing hotels & places to stay. Search to compare prices and discover great deals with free cancellation.",
+          "source": "https://www.agoda.com/city/beijing-cn.html",
+          "score": 0.69
+        }
+      ]
+    },
+    {
+      "step_id": 7,
+      "thought": "Search: {\"query\": \"Guangzhou to Beijing flight price\"}",
+      "action": {
+        "tool_name": "Search",
+        "params": "Guangzhou to Beijing flight price"
+      },
+      "observation": "- Popular airlines from Guangzhou to Beijing · China Southern. Nonstop. from $685. Typical price: $410–720 · Air China. Nonstop. Typical price: $820–970. $820.\n- Cheap Flights from Guangzhou (CAN) to Beijing (PEK) start at $464 for one-way and $961 for round trip. Earn your airline miles on top of our rewards!\n- The lowest price we've seen for a one-way Guangzhou Baiyun International Airport to Beijing flight is $68. The cheapest price for a return flight is $190. Bear ...\n- Book direct flights from Guangzhou to Beijing: One way flights from $68, round trip flights from $128. Find flight deals for the next 3 months below.\n- The absolute cheapest return flight from Guangzhou to Beijing costs $133 on the route between Guangzhou (CAN) and Beijing Capital Airport (PEK).",
+      "evidence": [
+        {
+          "content": "Popular airlines from Guangzhou to Beijing · China Southern. Nonstop. from $685. Typical price: $410–720 · Air China. Nonstop. Typical price: $820–970. $820.",
+          "source": "https://www.google.com/travel/flights/flights-from-guangzhou-to-beijing.html",
+          "score": 0.87
+        },
+        {
+          "content": "Cheap Flights from Guangzhou (CAN) to Beijing (PEK) start at $464 for one-way and $961 for round trip. Earn your airline miles on top of our rewards!",
+          "source": "https://www.expedia.com/lp/flights/can/pek/guangzhou-to-beijing",
+          "score": 0.77
+        },
+        {
+          "content": "The lowest price we've seen for a one-way Guangzhou Baiyun International Airport to Beijing flight is $68. The cheapest price for a return flight is $190. Bear ...",
+          "source": "https://www.skyscanner.com/routes/can/bjsa/guangzhou-to-beijing.html",
+          "score": 0.86
+        },
+        {
+          "content": "Book direct flights from Guangzhou to Beijing: One way flights from $68, round trip flights from $128. Find flight deals for the next 3 months below.",
+          "source": "https://us.trip.com/flights/guangzhou-to-beijing/airfares-can-bjs/",
+          "score": 0.76
+        },
+        {
+          "content": "The absolute cheapest return flight from Guangzhou to Beijing costs $133 on the route between Guangzhou (CAN) and Beijing Capital Airport (PEK).",
+          "source": "https://www.kayak.com/flight-routes/Guangzhou-Baiyun-CAN/Beijing-BJS",
+          "score": 0.73
+        }
+      ]
+    },
+    {
+      "step_id": 8,
+      "thought": "Calculator: {\"expression\": \"68\"}",
+      "action": {
+        "tool_name": "Calculator",
+        "params": "68"
+      },
+      "observation": "68",
+      "evidence": []
+    }
+  ],
+  "final": null
+}
