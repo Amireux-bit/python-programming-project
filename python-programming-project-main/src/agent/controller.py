@@ -170,20 +170,26 @@ class TravelAssistantController:
         used_tools_text = ", ".join(context["used_tools"]) if context["used_tools"] else "无"
         
         prompt = (
-        f"{context['system_prompt']}\n\n"
-        f"用户的问题: {context['user_query']}\n\n"
-        f"目前已知信息:\n{obs_text}\n\n"
-        f"已调用过的工具: {used_tools_text}\n\n"
-        "一定一定记住不要重复搜索已经获得的信息。\n"
-        "**重要**：如果当前信息中缺少具体的价格数据（如住宿、餐饮费用），\n"
-        "你必须继续调用 Search 工具获取详细价格，不能编造数字。\n\n"
-        "现在请输出下一步工具调用（只输出一行，严格按格式）：\n"
-        "工具名: JSON参数"
+        f"{context['system_prompt']}\n"
+        f"User query:\n{context['user_query']}\n"
+        f"Known observations so far:\n{obs_text}\n"
+        f"Tools already used: {used_tools_text}\n"
+        "Important:\n"
+        "- Do not search again for information already retrieved unless reformulated with a different focus.\n"
+        "- If current information is missing specific numeric data (e.g., costs, measurements), you must continue using Search to get details from relevant evidence only.\n"
+        "- Ignore irrelevant evidence and focus only on data connected to the current substep and topic.\n"
+        "- Only call Calculator when all numeric inputs are present and confirmed; the expression must contain digits and +-*/() only.\n"
+        "- Switch to the next substep if repeated attempts yield irrelevant results.\n"
+        "Now output exactly one tool call in the format:\n"
+        "ToolName: JSON-args"
+        "Allowed formats:\n"
+        "Search: {\"query\": \"...\"}\n"
+        "Calculator: {\"expression\": \"...\"}"
     )
         
         llm_output = self.llm.generate(
             prompt, 
-            temperature=self.config.get("temperature", 0.1)  # 降低温度
+            temperature=self.config.get("temperature", 0.1)  
         )
         return llm_output.strip()
 
