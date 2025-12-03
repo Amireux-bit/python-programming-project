@@ -1,4 +1,4 @@
-max_steps: 7               
+max_steps: 6               
 min_steps: 4
 temperature: 0.3              
 min_sources: 0                

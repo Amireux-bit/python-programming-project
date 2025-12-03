@@ -171,20 +171,17 @@ class TravelAssistantController:
         
         prompt = (
         f"{context['system_prompt']}\n"
-        f"User query:\n{context['user_query']}\n"
+        f"User question:\n{context['user_query']}\n"
         f"Known observations so far:\n{obs_text}\n"
         f"Tools already used: {used_tools_text}\n"
-        "Important:\n"
-        "- Do not search again for information already retrieved unless reformulated with a different focus.\n"
-        "- If current information is missing specific numeric data (e.g., costs, measurements), you must continue using Search to get details from relevant evidence only.\n"
-        "- Ignore irrelevant evidence and focus only on data connected to the current substep and topic.\n"
-        "- Only call Calculator when all numeric inputs are present and confirmed; the expression must contain digits and +-*/() only.\n"
-        "- Switch to the next substep if repeated attempts yield irrelevant results.\n"
-        "Now output exactly one tool call in the format:\n"
-        "ToolName: JSON-args"
-        "Allowed formats:\n"
+        "Filtering reminders:\n"
+        "- Keep only evidence relevant to the current substep and target city/topic; mark others as irrelevant (do not use them).\n"
+        "- Do not repeat an identical/near-identical search for the same substep; reformulate once if needed, then move on.\n"
+        "- Use Calculator only when all numeric inputs are present; expression must be digits and +-*/() only.\n"
+        "OUTPUT CONTRACT (reply must match exactly one of the two lines below, ASCII only):\n"
         "Search: {\"query\": \"...\"}\n"
-        "Calculator: {\"expression\": \"...\"}"
+        "Calculator: {\"expression\": \"...\"}\n"
+        "Your reply must be exactly one line with a single tool call, no extra text."
     )
         
         llm_output = self.llm.generate(
