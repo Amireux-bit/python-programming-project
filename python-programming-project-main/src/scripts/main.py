@@ -26,7 +26,7 @@ if __name__ == "__main__":
         config=config
     )
 
-    user_query = "Can you show me how much I cost to get London from Paris."
+    user_query = "Plan a trip to Tokyo for me."
 
     result = controller.run(user_query)
 

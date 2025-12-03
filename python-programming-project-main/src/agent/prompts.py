@@ -1,42 +1,28 @@
 import re
 
 def format_output(text: str) -> str:
-    """
-    将 Markdown 格式的文本转换为干净的纯文本
-    """
-    # 移除 Markdown 标题符号 (###, ##, #)
     text = re.sub(r'^#{1,6}\s*', '', text, flags=re.MULTILINE)
     
-    # 移除加粗符号 (**text** 或 __text__)
     text = re.sub(r'\*\*(.*?)\*\*', r'\1', text)
     text = re.sub(r'__(.*?)__', r'\1', text)
     
-    # 移除斜体符号 (*text* 或 _text_)
     text = re.sub(r'(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)', r'\1', text)
     text = re.sub(r'(?<!_)_(?!_)(.+?)(?<!_)_(?!_)', r'\1', text)
     
-    # 移除分隔线 (---, ***, ___)
     text = re.sub(r'^[-*_]{3,}\s*$', '', text, flags=re.MULTILINE)
     
-    # 移除列表符号 (- 或 * 开头)，替换为 • 
     text = re.sub(r'^\s*[-*]\s+', '• ', text, flags=re.MULTILINE)
     
-    # 移除数字列表符号 (1. 2. 等)
     text = re.sub(r'^\s*\d+\.\s+', '', text, flags=re.MULTILINE)
     
-    # 移除代码块标记 (```)
     text = re.sub(r'```[\s\S]*?```', '', text)
     
-    # 移除行内代码标记 (`code`)
     text = re.sub(r'`([^`]+)`', r'\1', text)
     
-    # 移除链接格式 [text](url) -> text
     text = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', text)
     
-    # 将多个换行符替换为两个换行符
     text = re.sub(r'\n{3,}', '\n\n', text)
     
-    # 移除空白行
     lines = [line.strip() for line in text.split('\n') if line.strip()]
     text = '\n'.join(lines)
     
@@ -45,9 +31,7 @@ def format_output(text: str) -> str:
 
 
 def build_initial_prompt(config: dict, user_query: str) -> str:
-    """
-    组合初始Prompt（系统规则 + 工具说明 + 用户问题）
-    """
+
     return "\n".join([
         system_prompt(),
         developer_prompt(),
@@ -133,7 +117,7 @@ def final_answer_prompt(evidence_text: str, user_query: str) -> str:
         f"Evidence (filtered to relevant parts):\n{evidence_text}\n"
         "Requirements:\n"
         "- Use ONLY evidence relevant to the question/topic; ignore unrelated locations or topics.\n"
-        "- Cite at least one real source (URL or named source) inline or at the end.\n"
+        "- Do not include 'Evidence source' lines or explicit citations in the final text. Integrate information naturally.\n"
         "- Do not fabricate numbers; if Calculator was used, reuse its exact total.\n"
         "- If the task involves costs, include a clear breakdown and the total.\n"
         "- Do not output any tool calls here.\n"
