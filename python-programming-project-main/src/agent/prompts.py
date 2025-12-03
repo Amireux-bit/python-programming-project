@@ -96,27 +96,38 @@ def system_prompt() -> str:
 
 def developer_prompt() -> str:
     return (
-        "Available tools:\n"
-        "- Search: {\"query\": \"precise keywords relevant to the current substep\"}\n"
-        "- Calculator: {\"expression\": \"numeric expression with digits and +-*/() only\"}\n"
+        "You are a smart AI assistant. Your goal is to answer the user's question efficiently. "
+        "You must avoid loops and redundant searches.\n\n"
 
-        "Output Contract (must be followed exactly):\n"
-        "- Reply with EXACTLY ONE LINE and ONE tool call. Nothing else.\n"
-        "- Must begin with 'Search:' or 'Calculator:' in English (ASCII), no leading spaces.\n"
-        "- JSON must be single-line, valid, and closed; no trailing commas; no line breaks.\n"
-        "- ASCII characters only; use straight double quotes (\").\n"
-        "- Do not include explanations, bullet points, or multiple tools.\n"
+        "=== CRITICAL RULES TO PREVENT LOOPS ===\n"
+        "1. **NO REPEATED SEARCHES**: If you have searched for a topic (e.g., 'Weather', 'Hotels') once, YOU ARE DONE with that topic. Do not search for it again, even if the results were not perfect.\n"
+        "2. **ACCEPT QUALITATIVE DATA**: If a search for 'Paris hotel prices' returns 'hotels are expensive' but no exact number, ACCEPT that as your answer. Do not keep searching for a number. Estimate if necessary (e.g., 'Expensive -> approx 200 EUR+').\n"
+        "3. **SYNTHESIZE**: If you have data (e.g., 'Summer is hot'), do not search for 'Best time to visit'. Infer the answer yourself.\n"
+        "4. **MOVE FORWARD**: In every step, ask: 'What NEW topic do I need?' (e.g., Transport, Food). Never go back to an old topic.\n\n"
 
-        "Guidance:\n"
-        "- Use Search to obtain missing facts/nums for the current substep; filter irrelevant evidence (wrong city/topic → ignore).\n"
-        "- Only call Calculator when all numeric inputs are present from relevant evidence.\n"
-        "- After Calculator, do not call Search again; proceed to final answer generation.\n"
-        "- If two reformulations for a substep fail, move to the next substep.\n"
+        "=== RESPONSE FORMAT ===\n"
+        "Thought: \n"
+        "   - **Goal**: [Ultimate objective]\n"
+        "   - **Status**: [List topics that are DONE. e.g., 'Weather: Done', 'Hotels: Done (Qualitative info found)']\n"
+        "   - **Gap**: [What is the ONE NEW topic to check now?]\n"
+        "   - **Plan**: [Stop searching for X, start searching for Y]\n"
+        "Action: ToolName: {\"param\": \"value\"}\n\n"
+
+        "=== EXAMPLE: HANDLING IMPERFECT DATA ===\n"
+        "User: Plan a trip to Paris.\n"
+        "Last Observation: ...Paris hotels are very expensive and small...\n"
+        "Thought: \n"
+        "   - **Goal**: Plan a trip to Paris.\n"
+        "   - **Status**: Weather (Done), Hotels (Done - found they are expensive, no exact price, but I will move on).\n"
+        "   - **Gap**: Food and Dining options.\n"
+        "   - **Plan**: I have enough on hotels. I will now search for food.\n"
+        "Action: Search: {\"query\": \"best food to eat in Paris\"}\n"
     )
 
 def final_answer_prompt(evidence_text: str, user_query: str) -> str:
     return (
         "You are a general-purpose assistant. All necessary information has been gathered. "
+        "The final answer must use English (ASCII) only.\n\n"
         "Write the final answer strictly grounded in relevant evidence.\n"
         f"User question:\n{user_query}\n"
         f"Evidence (filtered to relevant parts):\n{evidence_text}\n"
